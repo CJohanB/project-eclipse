@@ -155,9 +155,56 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 148.56807
       objectReference: {fileID: 0}
+    - target: {fileID: 1358749148495910, guid: 112056b10b5e2d3488861ae861bed718, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 112056b10b5e2d3488861ae861bed718, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1463501016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1463501018}
+  - component: {fileID: 1463501017}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1463501017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1463501016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce3901a5cfc0e544b947ac1314a737da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 10
+  heigt: 2
+  block: {fileID: 1583506007003190, guid: 039d37b14d21ad84bb3202278f45c32f, type: 2}
+--- !u!4 &1463501018
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1463501016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1678902278 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1358749148495910, guid: 112056b10b5e2d3488861ae861bed718,
@@ -216,7 +263,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 87a2357765801c34292d6718d8b4d770, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.8808155
+      value: 2.89
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 87a2357765801c34292d6718d8b4d770, type: 2}
       propertyPath: m_LocalPosition.y
