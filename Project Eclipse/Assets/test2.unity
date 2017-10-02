@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3901a5cfc0e544b947ac1314a737da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
+  width: 50
   heigt: 2
   block: {fileID: 1583506007003190, guid: 039d37b14d21ad84bb3202278f45c32f, type: 2}
 --- !u!4 &1463501018
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 246580121}
-  offset: {x: 0, y: 2.5, z: -1}
+  offset: {x: 0, y: 2, z: -1}
 --- !u!212 &1987301156
 SpriteRenderer:
   m_ObjectHideFlags: 0
