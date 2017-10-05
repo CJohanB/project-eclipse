@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CaveEnter : MonoBehaviour {
 
-   
+
 
 	// Use this for initialization
 	void Start () {
