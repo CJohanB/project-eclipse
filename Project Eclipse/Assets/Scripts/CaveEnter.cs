@@ -8,6 +8,7 @@ public class CaveEnter : MonoBehaviour {
 
     public GameObject uiButton;
     public string caveLevel;
+    bool enterdDoor = false;
 
 	// Use this for initialization
 	void Start () {
@@ -16,20 +17,20 @@ public class CaveEnter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
+        if (enterdDoor)
         {
-            Debug.Log("Player enterd collider.");
-            // uiButton.SetActive(true);
-
             if (Input.GetKeyDown(KeyCode.E))
             {
                 SceneManager.LoadScene(caveLevel);
-            } 
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other )
+    {
+        if (other.tag == "Player")
+        {
+            enterdDoor = true;
         }
     }
 
@@ -37,6 +38,7 @@ public class CaveEnter : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            enterdDoor = false;
            // uiButton.SetActive(false); 
         }
     }

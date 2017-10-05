@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorldGenerate : MonoBehaviour {
 
     
-    public float width;
+    public float width = 2000;
     public float heightMultiplier;
     public int heigtAddition;
     public float doorLocation;
@@ -14,7 +14,7 @@ public class WorldGenerate : MonoBehaviour {
 
     public float seed;
 
-    
+    public GameObject topBlock;
     public GameObject block;
     public GameObject startBlock;
     public GameObject door; 
@@ -23,7 +23,7 @@ public class WorldGenerate : MonoBehaviour {
     {
        
         seed = Random.Range(-10000f, 10000f);
-        doorLocation = width - 10;
+        doorLocation = width - 10f;
         Generate();
     }
 	
@@ -40,13 +40,22 @@ public class WorldGenerate : MonoBehaviour {
             int h = Mathf.RoundToInt(Mathf.PerlinNoise(seed, i / smoothness) * heightMultiplier) + heigtAddition;
             for (int j = 0; j < h; j++)
             {
-                if(j == h - 1 && i == 40)
+                if(j == h - 1 && i == doorLocation)
                 {
                     Debug.Log("Instantiated door at: x = " + i);
                     Instantiate (door, new Vector3(i , j + 1.5f), Quaternion.identity);
                 }
-                GameObject newBlock = Instantiate(block, new Vector3(i, j), Quaternion.identity);
-                newBlock.transform.parent = transform;
+
+                if (j == h - 1)
+                {
+                    GameObject newBlock = Instantiate(topBlock, new Vector3(i, j), Quaternion.identity);
+                    newBlock.transform.parent = transform;
+                }
+                else
+                {
+                    GameObject newBlock = Instantiate(block, new Vector3(i, j), Quaternion.identity);
+                    newBlock.transform.parent = transform; 
+                }
 
             }
         }
