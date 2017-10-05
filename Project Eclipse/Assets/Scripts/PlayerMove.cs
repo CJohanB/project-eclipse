@@ -8,6 +8,8 @@ public class PlayerMove : MonoBehaviour {
     public int maxSpeed;
     public int jumpForce;
 
+    private bool facingRight = true;
+
     public Rigidbody2D rgb;
 
     // Use this for initialization
@@ -28,5 +30,24 @@ public class PlayerMove : MonoBehaviour {
         {
             rgb.velocity = new Vector2(0, jumpForce);
         }
+
+        if (move > 0 && !facingRight)
+        {
+            Flip();
+        }
+
+        if (move < 0 && facingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        transform.localScale = newScale;
     }
 }
