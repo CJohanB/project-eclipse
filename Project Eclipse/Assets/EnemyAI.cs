@@ -10,6 +10,8 @@ public class EnemyAI : MonoBehaviour {
 
     public Transform target;
 
+    public float updateRate = 2f;
+
     private Seeker seeker;
     private Rigidbody2D rb;
 
@@ -35,6 +37,17 @@ public class EnemyAI : MonoBehaviour {
             return;
         }
         seeker.StartPath(transform.position, target.position, OnPathComplete);
+
+        StartCoroutine(UpdatePath());
+    }
+
+    IEnumerator UpdatePath ()
+    {
+        
+        seeker.StartPath(transform.position, target.position, OnPathComplete);
+
+        yield return new WaitForSeconds(1 / updateRate);
+        StartCoroutine(UpdatePath());
     }
 
     public void OnPathComplete(Path p)
@@ -47,8 +60,35 @@ public class EnemyAI : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    void Update () {
-       
+    void FixedUpdate () {
+        if (target == null)
+        {
+            return;
+        }
+
+        if (path == null)
+            return;
+
+        if (currentWaypoint >= path.vectorPath.Count)
+        {
+            if (pathIsEnded)
+                return;
+
+            Debug.Log("End Of Path Reached.");
+            pathIsEnded = true;
+            return;   
+        }
+        pathIsEnded = false;
+        Vector3 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
+        dir *= speed * Time.fixedDeltaTime;
+
+        rb.AddForce(dir, fMode);
+
+        float dist = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
+        if (dist < nextWaypointDistance)
+        {
+            currentWaypoint++;
+            return;
+        }
     }
 }
