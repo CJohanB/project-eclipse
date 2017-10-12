@@ -7,6 +7,7 @@ using Pathfinding;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyAI : MonoBehaviour {
 
+    public LayerMask layerMask;
 
     public Transform target;
 
@@ -85,6 +86,20 @@ public class EnemyAI : MonoBehaviour {
         rb.AddForce(dir, fMode);
 
         float dist = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, target.position, 10, layerMask);
+        //Debug.Log(hit.transform.name);
+
+        Debug.DrawRay(hit.point, transform.position);
+
+        if (hit.collider.tag == "Obstacle")// && dist < nextWaypointDistance)
+        {
+            Debug.Log("Jumping");
+            rb.AddForce(Vector3.up * 10, fMode);
+        }
+
+      
+
         if (dist < nextWaypointDistance)
         {
             currentWaypoint++;

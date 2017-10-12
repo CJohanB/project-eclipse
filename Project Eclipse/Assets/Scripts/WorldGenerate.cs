@@ -63,7 +63,7 @@ public class WorldGenerate : MonoBehaviour {
 
         Instantiate(startBlock, new Vector3(width + 1.5f, 4.5f), Quaternion.identity);
 
-        AstarPath.active.Scan();
+        //AstarPath.active.Scan();
     }
 
     
