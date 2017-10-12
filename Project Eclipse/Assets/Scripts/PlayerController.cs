@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     private PlayerMove playerMove;
     private bool jump;
 
+
+
     void Awake()
     {
         playerMove = GetComponent<PlayerMove>();
@@ -16,12 +18,13 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Update () {
 
+
         jump = Input.GetKeyDown(KeyCode.Space);
-		
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
         float horizontal = Input.GetAxis("Horizontal");
 
         playerMove.Move(horizontal, jump);
