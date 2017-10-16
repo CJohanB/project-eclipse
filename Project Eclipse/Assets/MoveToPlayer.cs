@@ -9,6 +9,7 @@ public class MoveToPlayer : MonoBehaviour {
     public LayerMask layerMask;
     public Vector3 speed;
     public bool facingRight = true;
+    public int force;
 
 
     // Use this for initialization
@@ -20,10 +21,10 @@ public class MoveToPlayer : MonoBehaviour {
     {
         if(other.tag == "Obstacle")
         {
-            Debug.Log("JAG HATAR LIVET!");
+          
            // if (Vector3.Distance(transform.position, other.transform.position) > 2)
             //{
-                rb.AddForce(new Vector3(0, 1000, 0));
+                rb.AddForce(new Vector3(0, force, 0));
            // }
 
         }
@@ -36,7 +37,7 @@ public class MoveToPlayer : MonoBehaviour {
 
         Vector3 dir = (player.transform.position - transform.position);
 
-        rb.AddForce(dir * 2);
+        rb.AddForce(dir);
 
         if (dir.x > 0 && !facingRight)
         {
