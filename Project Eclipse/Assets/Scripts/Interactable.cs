@@ -14,10 +14,12 @@ public class Interactable : MonoBehaviour{
 
     GameObject GameMaster;
 
+    GameObject Player;
+
     private void Update()
     {
         GameMaster = GameObject.FindGameObjectWithTag("GameMaster");
-
+        Player = GameObject.FindGameObjectWithTag("Player");
 
         if (incontact == true && itemUsed == false)
         {
@@ -26,7 +28,7 @@ public class Interactable : MonoBehaviour{
                 itemInProg = itemID;
                 itemUsed = true;
                 GameMaster.GetComponent<ChecksID>().indentifiID = itemInProg;
-
+                Destroy(gameObject);
             }
         }
     }
@@ -34,13 +36,19 @@ public class Interactable : MonoBehaviour{
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        incontact = true;
+        if (collision.gameObject.tag == "Player")
+        {
+            incontact = true;
+        }
     }
 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        incontact = false;
+        if (collision.gameObject.tag == "Player")
+        {
+            incontact = false;
+        }
     }
 
 

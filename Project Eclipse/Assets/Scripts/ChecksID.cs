@@ -8,10 +8,18 @@ public class ChecksID : MonoBehaviour {
 
     GameObject Player;
 
+    GameObject GameMaster;
+
+    float Time;
+
+    float TempTime;
+
 	// Use this for initialization
 	void Start () {
 
         Player = GameObject.FindGameObjectWithTag("Player");
+
+        GameMaster = GameObject.FindGameObjectWithTag("GameMaster");
 
 	}
 	
@@ -31,6 +39,11 @@ public class ChecksID : MonoBehaviour {
             if (indentifiID == 2)
             {
                 Player.GetComponent<PlayerMove>().jumpForce += 10;
+                indentifiID = 0;
+            }
+            if (indentifiID == 3)
+            {
+                GameMaster.GetComponent<PlayerThings>().DamangePlayerDo += 0.5f;
                 indentifiID = 0;
             }
 
