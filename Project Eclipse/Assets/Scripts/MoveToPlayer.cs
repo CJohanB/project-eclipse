@@ -8,8 +8,14 @@ public class MoveToPlayer : MonoBehaviour {
     private Rigidbody2D rb;
     public LayerMask layerMask;
     public Vector3 speed;
+
     public bool facingRight = true;
-    public int force;
+
+    public int jumpForce;
+
+    public float maxSpeed;
+    public float attackDistance = 1;
+    public float range = 10;
 
 
     // Use this for initialization
@@ -24,7 +30,7 @@ public class MoveToPlayer : MonoBehaviour {
           
            // if (Vector3.Distance(transform.position, other.transform.position) > 2)
             //{
-                rb.AddForce(new Vector3(0, force, 0));
+                rb.AddForce(new Vector3(0, jumpForce, 0));
            // }
 
         }
@@ -37,18 +43,25 @@ public class MoveToPlayer : MonoBehaviour {
 
         Vector3 dir = (player.transform.position - transform.position);
 
-        rb.AddForce(dir);
 
-        if (dir.x > 0 && !facingRight)
+        if (dis < range && dis >= attackDistance)
         {
-            Flip();
-        }
+            if (rb.velocity.magnitude < maxSpeed)
+            {
+                rb.AddForce(dir); 
+            }
 
-        if (dir.x < 0 && facingRight)
-        {
-            Flip();
-        }
+            if (dir.x > 0 && !facingRight)
+            {
+                Flip();
+            }
 
+            if (dir.x < 0 && facingRight)
+            {
+                Flip();
+            }
+
+        }
     }
 
     private void Flip()
