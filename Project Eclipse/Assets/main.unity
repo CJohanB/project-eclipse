@@ -471,7 +471,10 @@ MonoBehaviour:
     m_Bits: 512
   speed: {x: 0, y: 0, z: 0}
   facingRight: 1
-  force: 250
+  jumpForce: 250
+  maxSpeed: 200
+  attackDistance: 1
+  range: 10
 --- !u!50 &1185149106
 Rigidbody2D:
   serializedVersion: 4
