@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Obstacle
   - Enemy
+  - GameMaster
+  - Interactable
+  - DangerZone
   layers:
   - Default
   - TransparentFX

@@ -2,32 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour{
 
-    [SerializeField] private int itemID;
+public class Interactible2 : MonoBehaviour {
 
-    [SerializeField] private int itemInProg;
+    public Effect effect = new Effect();
 
     bool incontact = false;
-
-     bool itemUsed = false;
+    bool itemUsed = false;
 
     GameObject GameMaster;
-
     GameObject Player;
+
+    public int speedBoost;
+    public int jumpBost;
+    public float timeLimit;
+
+    public void Start()
+    {
+
+        effect.speedBoost += speedBoost;
+        effect.jumpBost += jumpBost;
+        effect.timeLimit += timeLimit;
+        GameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+        Player = GameObject.FindGameObjectWithTag("Player");
+
+
+    }
 
     private void Update()
     {
-        GameMaster = GameObject.FindGameObjectWithTag("GameMaster");
-        Player = GameObject.FindGameObjectWithTag("Player");
+       
 
         if (incontact == true && itemUsed == false)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                itemInProg = itemID;
                 itemUsed = true;
-                GameMaster.GetComponent<ChecksID>().indentifiID = itemInProg;
+                GameMaster.GetComponent<cheackEffects>().Cheack(effect);
                 Destroy(gameObject);
             }
         }
@@ -50,6 +61,5 @@ public class Interactable : MonoBehaviour{
             incontact = false;
         }
     }
-
 
 }
